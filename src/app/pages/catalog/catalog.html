@@ -1,0 +1,56 @@
+<section class="vt-catalog">
+
+  <section class="vt-catalog--search">
+    <mat-form-field class="search--input">
+      <input matInput type="text" [(ngModel)]="query" placeholder="Search for a game"/>
+      <button mat-button matSuffix mat-icon-button aria-label="Clear">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </section>
+  
+  <section class="vt-catalog--games">
+    
+    <mat-card *ngFor="let game of gamesList | filterInput: query">
+      <mat-card-title>
+        {{ game.title }}
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ game.year }} ( '{{currentYear - game.year}} years old )
+      </mat-card-subtitle>
+      <mat-card-content>
+        <ul class="catalog--games-list">
+          <li>
+            <p class="list-title">Console</p>
+            <p class="list-item">{{ game.console }}</p>
+          </li>
+          <li>
+            <p class="list-title">Completed?</p>
+            <p *ngIf="!game.completed" class="list-item">No</p>
+            <p *ngIf="!!game.completed" class="list-item">Yes</p>
+          </li>
+          <li *ngIf="game.date_of_completion">
+            <p class="list-title">Date of completion</p>
+            <p class="list-item">{{ game.date_of_completion | date }}</p>
+          </li>
+          <li>
+            <p class="list-title">Notes</p>
+            <p class="list-item">{{ game.notes }}</p>            
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+
+    
+    <!-- <ul>
+      <li *ngFor="let game of gamesList | filterInput: query">
+        {{ game.title }}
+        {{ game.year }}
+        {{ game.console }}
+        {{ game.notes }}
+        {{ game.completed }}        
+      </li>
+    </ul> -->
+  </section>
+  
+</section>

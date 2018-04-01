@@ -1,0 +1,70 @@
+<mat-progress-bar 
+  mode="indeterminate" 
+  color="accent" 
+  *ngIf="activeProgressBar"
+  class="vt-main--progress">
+</mat-progress-bar>
+
+<section class="vt-main">
+
+  <h1 class="vt-main--title">
+    Add a new game to the catalog
+  </h1>
+
+  <form (ngSubmit)="createNewGame()" #addGameForm="ngForm">      
+
+    <mat-grid-list cols="1">
+      <mat-form-field class="vt-main-form--item">
+        <input matInput placeholder="Game Title" [(ngModel)]="gameData.title" name="title" required>
+      </mat-form-field>
+    </mat-grid-list>
+
+    <mat-grid-list cols="2" rowHeight="70px">
+      <mat-grid-tile>
+        <mat-form-field class="vt-main-form--item">
+          <input matInput placeholder="Year" [(ngModel)]="gameData.year" name="year" required>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field class="vt-main-form--item vt-main-form--spacing">
+          <mat-select placeholder="Console" [(ngModel)]="gameData.console" name="console" required>
+            <mat-option *ngFor="let console of consoles" [value]="console.value">
+              {{ console.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="2" rowHeight="70px">
+      <mat-grid-tile>
+        <div class="vt-main-form--item">
+          <mat-checkbox class="example-margin" [(ngModel)]="gameData.completed" name="completed">Completed?</mat-checkbox>
+        </div>        
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field *ngIf="!!gameData.completed" class="vt-main-form--item vt-main-form--spacing">
+          <input matInput [matDatepicker]="picker" [(ngModel)]="gameData.date_of_completion" placeholder="Date of completion" name="date_completion">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    
+    <mat-grid-list cols="1">
+      <mat-form-field class="vt-main-form--item">
+        <textarea matInput placeholder="Notes" [(ngModel)]="gameData.notes" name="notes" required></textarea>
+      </mat-form-field>
+    </mat-grid-list>    
+
+    <button 
+      mat-button mat-raised-button 
+      color="primary" 
+      type="submit" 
+      [disabled]="addGameForm.form.invalid">
+      Add game
+    </button>
+  </form>
+</section>
