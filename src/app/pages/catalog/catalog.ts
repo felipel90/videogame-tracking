@@ -22,17 +22,11 @@ export class CatalogPage implements OnInit {
   gamesList: any;
   currentYear: any;
 
-  constructor(db: AngularFirestore) {
-    this.currentYear = (new Date()).getFullYear();
-    console.log(this.current_year)
-    db.collection<GameDetails>('games').valueChanges().subscribe((res) => {
-      this.gamesList = res;
-      console.log(this.gamesList);
+  constructor(private _db: AngularFirestore) {
+    this.currentYear = (new Date()).getFullYear();    
+    this._db.collection<GameDetails>('games').valueChanges().subscribe((res) => {
+      this.gamesList = res;      
     });
-  }
-
-  public searchSomeGame() {
-    console.log('search')
   }
 
   ngOnInit() { }

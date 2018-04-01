@@ -6,6 +6,23 @@
   }
 
   .vt-catalog--games {
+    padding-top: 15px;
+    
+    .catalog--games-title {
+      font-weight: 400;
+      font-size: 14px;
+      color: #757575;
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding-bottom: 10px;
+
+      .title--icon {
+        color: #4e4d4d;
+        padding-right: 5px;
+      }
+    }
+
     .catalog--games-list {
       padding: 0;
       list-style: none;

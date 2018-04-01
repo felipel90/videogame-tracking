@@ -10,6 +10,11 @@
   </section>
   
   <section class="vt-catalog--games">
+
+    <h2 class="catalog--games-title">
+      <mat-icon class="title--icon">list</mat-icon>
+      Game catalog
+    </h2>
     
     <mat-card *ngFor="let game of gamesList | filterInput: query">
       <mat-card-title>
