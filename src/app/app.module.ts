@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material.module';
 
 // firebase config
@@ -19,6 +20,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { BaseModule } from './pages/base/base.module';
 import { HomeModule } from './pages/home/home.module';
 import { CatalogModule } from './pages/catalog/catalog.module';
+import { ConsolesService } from './services/consoles/consoles.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { CatalogModule } from './pages/catalog/catalog.module';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
     MaterialModule,
     
     // app modules
@@ -41,7 +44,7 @@ import { CatalogModule } from './pages/catalog/catalog.module';
     AngularFireAuthModule,
     AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [ConsolesService],
   bootstrap: [AppComponent]
 })
 
