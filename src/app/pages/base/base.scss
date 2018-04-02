@@ -1,3 +1,9 @@
 .vt-main {
   padding: 30px 140px;
 }
+
+@media (max-width: 767px) {
+  .vt-main {
+    padding: 30px 20px;
+  }
+}
