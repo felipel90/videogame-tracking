@@ -11,7 +11,7 @@ import { ConsolesService } from '../../services/consoles/consoles.service';
 })
 
 export class HomePage implements OnInit {
-  gameData = {};
+  gameData = {} as any;
   consoles: any[];
   todoCollectionRef: AngularFirestoreCollection<any>;
   activeProgressBar = false;
@@ -31,7 +31,7 @@ export class HomePage implements OnInit {
     this.activeProgressBar = true;
     return this._afs.collection('games').add(this.gameData)
       .then((res) => {
-        this.gameData = {};
+        this.gameData = {} as any;
         this.activeProgressBar = false;
         this.snackBar.open('Game added in the catalog', 'Close', {
           duration: 5000

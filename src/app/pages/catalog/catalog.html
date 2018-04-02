@@ -2,7 +2,7 @@
 
   <section class="vt-catalog--search">
     <mat-form-field class="search--input">
-      <input matInput type="text" [(ngModel)]="query" placeholder="Search for a game"/>
+      <input matInput type="text" [(ngModel)]="queryFilter" placeholder="Search for a game"/>
       <button mat-button matSuffix mat-icon-button aria-label="Clear">
         <mat-icon>search</mat-icon>
       </button>
@@ -16,7 +16,7 @@
       Game catalog
     </h2>
     
-    <mat-card *ngFor="let game of gamesList | filterInput: query">
+    <mat-card *ngFor="let game of gamesList | filterInput: queryFilter">
       <mat-card-title class="cagalog--games-list-title">
         {{ game.title }}
       </mat-card-title>

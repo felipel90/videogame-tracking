@@ -21,6 +21,7 @@ export interface GameDetails {
 export class CatalogPage implements OnInit {
   gamesList: any;
   currentYear: any;
+  queryFilter: any;
 
   constructor(private _db: AngularFirestore) {
     this.currentYear = (new Date()).getFullYear();    
