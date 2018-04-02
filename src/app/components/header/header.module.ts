@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { HeaderComponent } from './header.component';
-import { MaterialModule } from '../../material.module';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [
-    MaterialModule,
+    SharedModule,
     RouterModule
   ],
   exports: [
